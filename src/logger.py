@@ -4,7 +4,7 @@ from os import mkdir
 
 class Logger:
     def __init__(self):
-        self.columns: list[str] = []
+        self.columns = []
         executed_file_path = dirname(abspath(__file__))
         log_directory = join(executed_file_path, 'logs')
         tracker_file_path = join(log_directory, 'last_log.txt')
@@ -36,12 +36,22 @@ class Logger:
 
         print("Logger initialized. Writing to `{}`".format(self.log_path))
 
-    def set_columns(self, columns: list[str]) -> None:
+    def write_dict(self, robot_info: dict):
+        if self.header_written:
+            print("Cannot write dict to log as header is already written. This will create unusable csv file")
+            return
+        for key in robot_info.keys():
+            self.log_fd.write('{}: {}, '.format(key, robot_info[key]))
+        self.log_fd.write('\n')
+
+    def set_columns(self, columns) -> None:
         self.columns = columns
-        self.log_fd.write(','.join(columns)+'\n')
+        header = ','.join(columns)+'\n'
+        self.log_fd.write(header)
+        print("Log header is `{}`".format(header[:-1]))
         self.header_written = True
 
-    def log(self, values: dict[str, float]) -> None:
+    def log(self, values) -> None:
         if not self.header_written:
             self.set_columns(list(values.keys()))
 
@@ -53,6 +63,5 @@ class Logger:
         row_string = row_string[:-1]
         self.log_fd.write(row_string+'\n')
 
-if __name__ == '__main__':
-    l = Logger()
-    l.log({'a': 1, 'b': 2, 'c': 3, 'd': 4})
+    def close(self):
+        self.log_fd.close()
