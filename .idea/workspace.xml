@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c71bd1a-4de1-4ac5-b985-32200ba0abbe" name="Changes" comment="initial commit. Code untested on real EV3">
-      <change afterPath="$PROJECT_DIR$/copy_to.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/make_plots.ipynb" afterDir="false" />
+    <list default="true" id="6c71bd1a-4de1-4ac5-b985-32200ba0abbe" name="Changes" comment="hell.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/odometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/odometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/make_plots.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/logs/make_plots.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/regulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/regulator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/robot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vec2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/vec2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,8 +112,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.robot" />
       <item itemvalue="Python.logger" />
+      <item itemvalue="Python.robot" />
     </list>
     <recent_temporary>
       <list>
@@ -147,7 +143,9 @@
       <workItem from="1715606494716" duration="1691000" />
       <workItem from="1715611027098" duration="5585000" />
       <workItem from="1715696495419" duration="1260000" />
-      <workItem from="1717074004582" duration="3746000" />
+      <workItem from="1717074004582" duration="4158000" />
+      <workItem from="1717083154706" duration="682000" />
+      <workItem from="1717156773819" duration="101000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit. Code untested on real EV3">
       <option name="closed" value="true" />
@@ -157,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715169383615</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hell.">
+      <option name="closed" value="true" />
+      <created>1717077922215</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717077922215</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +182,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit. Code untested on real EV3" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit. Code untested on real EV3" />
+    <MESSAGE value="hell." />
+    <option name="LAST_COMMIT_MESSAGE" value="hell." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RoboticsLab5$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1715164475649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />

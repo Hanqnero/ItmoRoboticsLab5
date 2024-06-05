@@ -140,7 +140,7 @@ class Robot:
         self.left_motor.stop()
         self.right_motor.stop()
 
-        sleep(300)
+        sleep(0.3)
 
     def stop(self):
         self.left_motor.stop()
@@ -172,4 +172,6 @@ if __name__ == '__main__':
         robot.stop()
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
+    finally:
         robot.stop()
+

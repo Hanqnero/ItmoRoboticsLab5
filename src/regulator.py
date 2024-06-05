@@ -8,7 +8,7 @@ def clamp(x, max_, min_):
 class Regulator:
     def __init__(self, kp: float, saturation: int, dt: float):
         self.kp = kp
-        self.ki = kp / 2
+        self.ki = kp * .75
         self.saturation = saturation
         self.integral = Integral(0, 0, dt)
 
