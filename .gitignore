@@ -1,2 +1,3 @@
 .venv/
-src/logs/
+logs/*.csv
+polar/logs/*.csv
