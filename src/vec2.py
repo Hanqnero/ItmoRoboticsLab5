@@ -8,7 +8,7 @@ class Vec2:
         self.alpha = self.atan2()
 
     def norm(self) -> float:
-        return self.x * self.x + self.y * self.y
+        return math.hypot(self.x,self.y)
 
     def atan2(self):
         return math.atan2(self.y, self.x)

@@ -2,8 +2,9 @@ import math
 
 from vec2 import Vec2, shift_angle
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B
-from regulator import Regulator, clamp
+from regulator import clamp
 from odometry import Integral
+from polar_regulator import NLRegulator
 from time import time, sleep
 from logger import Logger
 
@@ -13,8 +14,7 @@ class Robot:
                  position: Vec2,
                  left_motor: LargeMotor,
                  right_motor: LargeMotor,
-                 linear_regulator: Regulator,
-                 angular_regulator: Regulator,
+                 regulator: NLRegulator,
                  wheel_radius: float,
                  base_length: float,
                  dt: float,
@@ -44,8 +44,6 @@ class Robot:
 
         # Write robot parameters to log
         self.my_logger.write_dict({
-                'linear_kp': self.linear_regulator.kp,
-                'angular_kp': self.angular_regulator.kp,
                 'wheel_radius': self.wheel_radius,
                 'base_length': self.base_length,
             })
@@ -91,8 +89,8 @@ class Robot:
 
             # Update motors current
             # ---------------------
-            linear_component_current = self.linear_regulator(error_vector.norm())
-            angular_component_current = self.angular_regulator(angular_error)
+            linear_component_current = self.regulator.get_linear_velocity(error_vector.norm(), angular_error)
+            angular_component_current = self.regulator.get_angular_velocity(error_vector.norm(), angular_error)
 
             left_motor_out = clamp(linear_component_current - angular_component_current, 100, -100)
             right_motor_out = clamp(linear_component_current + angular_component_current, 100, -100)
@@ -150,10 +148,10 @@ class Robot:
 
 
 if __name__ == '__main__':
-    logger = Logger()
+    logger = Logger("polar")
     robot = Robot(
         position=Vec2(0, 0),
-        left_motor=LargeMotor(OUTPUT_B),
+        left_motor=LargeMotor(OUTPUT_D),
         right_motor=LargeMotor(OUTPUT_A),
         linear_regulator=Regulator(300, saturation=100, dt=0.06),
         angular_regulator=Regulator(200 / math.pi * 2, saturation=200, dt=0.06),
@@ -162,14 +160,9 @@ if __name__ == '__main__':
         base_length=0.17,
         dt=0.06
     )
-    robot.position.alpha = 0
 
     try:
-        robot.goto(Vec2(0, 2), 0.02)
-        robot.goto(Vec2(2, 2), 0.02)
-        robot.goto(Vec2(2, 0), 0.02)
-        robot.goto(Vec2(0, 0), 0.02)
-        robot.stop()
+        robot.goto(Vec2(1, 0), 0.02)
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
     finally:

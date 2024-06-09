@@ -3,10 +3,10 @@ from os import mkdir
 
 
 class Logger:
-    def __init__(self):
+    def __init__(self, *path):
         self.columns = []
         executed_file_path = dirname(abspath(__file__))
-        log_directory = join(executed_file_path, 'logs')
+        log_directory = join(executed_file_path, *path, 'logs')
         tracker_file_path = join(log_directory, 'last_log.txt')
 
         new_log_number = 1
